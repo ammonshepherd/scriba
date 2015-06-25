@@ -5,3 +5,14 @@ body { padding-top: 100px; }
 footer { margin-top: 100px; }
 table, td, th { vertical-align: middle; border: none; }
 th { border-bottom: 1px solid #DDD; }
+
+.spot {
+  border-radius: 50%;
+  border: solid 1px #aaa;
+  box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.75);
+  margin: 6px;
+}
+
+.image {
+  margin: 4px;
+}
