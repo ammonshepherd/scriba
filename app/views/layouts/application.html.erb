@@ -2,16 +2,17 @@
 <html>
 <head>
   <title>Scriba</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= stylesheet_link_tag "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" %>
   <%= stylesheet_link_tag "//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" %>
+  <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Sonsie+One|Roboto' %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
@@ -19,25 +20,32 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to "Scriba", root_path, class: 'navbar-brand' %>
+      <%= link_to "Scriba", root_path, class: 'navbar-brand logo' %>
     </div>
+
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li class="active">
           <%= link_to "Transcriptions", transcriptions_path %>
         </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
         <li>
-          <p class="navbar-text pull-right">
+          <div class="navbar-text">
           <% if user_signed_in? %>
-            <%= image_tag current_user.gravatar_url, class: 'gravatar' %>
-            Logged in as <strong><%= current_user.email %></strong>.
-            <%= link_to 'Edit profile', edit_user_registration_path, class: 'navbar-link' %> |
-            <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'navbar-link' %>
+            <p><%= image_tag current_user.gravatar_url, class: 'gravatar' %>
+            Logged in as <strong><%= current_user.email %></strong>.</p>
+            <span class="logins">
+              <%= link_to 'Edit profile', edit_user_registration_path, class: 'navbar-link' %> |
+              <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'navbar-link' %>
+            </span>
           <% else %>
-            <%= link_to 'Sign up', new_user_registration_path, class: 'navbar-link' %> |
-            <%= link_to 'Login', new_user_session_path, class: 'navbar-link' %>
+            <span class="logins">
+              <%= link_to 'Sign up', new_user_registration_path, class: 'navbar-link' %> |
+              <%= link_to 'Login', new_user_session_path, class: 'navbar-link' %>
+            </span>
           <% end %>
-          </p>
+          </div>
         </li>
       </ul>
     </div>
